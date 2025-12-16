@@ -8,7 +8,6 @@
 
 
 const urls = [
-	'https://hhming.moe',
-	'https://github.com/hms5232',
-	'https://gitlab.com/hms5232',
+	'https://www.starluxcargo.com/zh-TW',
+	'https://www.brcargo.com/NEC_WEB/Tracking/QuickTracking/Index',
 ];
