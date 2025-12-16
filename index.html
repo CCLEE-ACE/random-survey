@@ -1,18 +1,31 @@
 <!doctype html>
-<html>
+<html lang="zh-Hant">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Router Test</title>
+  <title>Survey Router</title>
 </head>
 <body style="font-family: Arial; padding: 24px;">
-  <h1>Router is LIVE</h1>
-  <p>If you can see this page, GitHub Pages is serving index.html correctly.</p>
-  <p id="t"></p>
+  <h2>Survey Router is LIVE</h2>
+  <p>3 秒後將為你隨機分配問卷…</p>
+  <p id="debug"></p>
 
   <script>
-    document.getElementById("t").textContent =
-      "Loaded at: " + new Date().toISOString();
+    // === 換成你的 SurveyCake 兩份問卷連結 ===
+    const SURVEY_A = "https://www.starluxcargo.com/zh-TW";
+    const SURVEY_B = "https://www.brcargo.com/NEC_WEB/Tracking/QuickTracking/Index";
+
+    const group = Math.random() < 0.5 ? "A" : "B";
+    const target = (group === "A") ? SURVEY_A : SURVEY_B;
+
+    // 顯示 debug，讓你確定不是又空白
+    document.getElementById("debug").textContent =
+      `本次分配：${group} → ${target}`;
+
+    // 3 秒後跳轉（避免你看不到任何東西）
+    setTimeout(() => {
+      location.href = target;   // 用 href（保留可返回），更好除錯
+    }, 3000);
   </script>
 </body>
 </html>
