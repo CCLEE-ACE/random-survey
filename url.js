@@ -1,13 +1,19 @@
-/*
- * 將要隨機派發的網址放入下方（不需排序）
- *
- * 並請注意：
- * 1. 網址請用引號（或稱「撇號」，單引號或雙引號皆可）包起來
- * 2. 包起來的網址之間用逗號分隔
- */
+<!doctype html>
+<meta charset="utf-8" />
+<title>Survey Router</title>
 
+<script>
+  // 兩份問卷網址
+  const A = "https://example.com/surveyA";
+  const B = "https://example.com/surveyB";
 
-const urls = [
-	'https://www.starluxcargo.com/zh-TW',
-	'https://www.brcargo.com/NEC_WEB/Tracking/QuickTracking/Index',
-];
+  // 50/50 隨機
+  const target = (Math.random() < 0.5) ? A : B;
+
+  // 可選：在網址帶上分組資訊，方便你之後在問卷端辨識
+  const group = (target === A) ? "A" : "B";
+  const withTag = target + (target.includes("?") ? "&" : "?") + "group=" + group;
+
+  // 立刻跳轉
+  location.replace(withTag);
+</script>
